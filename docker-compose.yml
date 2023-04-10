@@ -1,0 +1,21 @@
+# 根據 Dockerfile 寫 docker-compose
+version: '3'
+services:
+  client:
+    build:
+      context: .
+      target: client
+    ports:
+      - "3000:3000"
+    depends_on:
+      - server
+  server:
+    build:
+      context: .
+      target: server
+    ports:
+      - "4000:4000"
+
+networks:
+  default:
+    name: graphql-demo

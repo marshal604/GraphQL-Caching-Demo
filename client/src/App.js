@@ -23,19 +23,19 @@ const client = new ApolloClient({
   fetchPolicy: 'cache-first',
 });
 
-// function Greeting() {
-//   const { loading, error, data, refetch } = useQuery(GREETING_QUERY, {
-//     fetchPolicy: 'network-only'
-//   });
+function Greeting() {
+  const { loading, error, data, refetch } = useQuery(GREETING_QUERY, {
+    fetchPolicy: 'network-only'
+  });
 
-//   if (loading) return <p>Loading...</p>;
-//   if (error) return <p>Error :(</p>;
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
 
-//   return (<div style={{display: 'flex', alignItems: 'center'}}>
-//     <h1> { data.greeting } </h1>
-//     <button style={{ marginLeft: 12 }} onClick={() => refetch()}>Refresh</button>
-//   </div>);
-// }
+  return (<div style={{display: 'flex', alignItems: 'center'}}>
+    <h1> { data.greeting } </h1>
+    <button style={{ marginLeft: 12 }} onClick={() => refetch()}>Refresh</button>
+  </div>);
+}
 
 function GreetingCacheById() {
   const { loading, error, data, refetch } = useQuery(GREETING_CACHE_BY_ID_QUERY, {
@@ -56,7 +56,7 @@ function App() {
     <ApolloProvider client={client}>
       <div className="App">
         <header className="App-header">
-          {/* <Greeting /> */}
+          <Greeting />
           <GreetingCacheById />
           <hr />
         </header>
